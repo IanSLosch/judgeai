@@ -1,5 +1,4 @@
 import { View, Image, StyleSheet, Text } from "react-native";
-import { LoadingIcon } from "../assets/LoadingIcon.png"
 import Constants from 'expo-constants';
 
 const LoadingScreen = () => {
