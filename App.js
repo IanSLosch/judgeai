@@ -1,27 +1,23 @@
 import Main from './screens/MainComponent';
-import LoadingScreen from './screens/LoadingScreen';
-import { TouchableOpacity } from 'react-native';
 import { useState } from 'react';
+import { TouchableOpacity } from 'react-native';
+import LoadingScreen from './screens/LoadingScreen';
 
-
-
-
-export default function App() {
+const App = () => {
   const [loading, setLoading] = useState(true)
+  const toggleLoadingScreen = () => { setLoading(!loading) }
 
-  const toggleLoadingScreen = () => {
-    setLoading(!loading)
-  }
-  
   if (loading) {
-    return(
+    return (
       <TouchableOpacity style={{ flex: 1, backgroundColor: '#2F2D2D' }} onPress={() => toggleLoadingScreen()}>
         <LoadingScreen />
       </TouchableOpacity>
     )
   }
-  
+
   return (
     <Main />
   );
 }
+
+export default App

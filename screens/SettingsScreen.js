@@ -1,10 +1,8 @@
 import { Text, View, StyleSheet, Alert } from "react-native";
 import { Button } from "react-native-elements";
 
+const SettingsScreen = ({ navigation, route }) => {
 
-
-const SettingsScreen = () => {
-  
   const deleteAccount = () => Alert.alert(
     'Delete Account',
     'Are you sure you wish to delete your account?',
@@ -21,40 +19,34 @@ const SettingsScreen = () => {
     ],
     { cancelable: false }
   )
-  
-  
+
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>You have entered the danger zone...</Text>
-      <Button 
-      title={'Delete Account'}
-      onPress={() => deleteAccount()}
-      containerStyle={{
-        width: 150,
-        marginHorizontal: 50,
-        marginVertical: 10
-      }}
-      buttonStyle={{
-        backgroundColor: '#AD1457',
-      }}
-      />
+    <View style={styles.container} >
+      <View style={styles.content} >
+        <Button buttonStyle={styles.button} title='Login' onPress={() => navigation.navigate('Login')} />
+        <Button buttonStyle={styles.button} title='Create Account' onPress={() => navigation.navigate('CreateAccount')} />
+        <Button buttonStyle={styles.button} title='Forgot Password' onPress={() => navigation.navigate('ForgotPassword')} />
+        <Button buttonStyle={styles.button} title='Delete Account' onPress={() => deleteAccount()} />
+      </View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
+  button: {
+    padding: 15,
+    margin: 10,
+    backgroundColor: '#AD1457',
+  },
   container: {
     flex: 1,
     alignItems: 'center',
+    justifyContent: 'center'
   },
   content: {
-    marginTop: 10,
     fontSize: 24
   },
-  text: {
-    fontSize: 16,
-    marginTop: 10,
-  }
 })
 
 export default SettingsScreen

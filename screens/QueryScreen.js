@@ -1,36 +1,35 @@
 import { useState } from "react";
 import { View, Text, KeyboardAvoidingView, TextInput, StyleSheet, FlatList, SafeAreaView } from "react-native";
 
-
-const QueryScreen = () => {
+const QueryScreen = ({ navigation, route }) => {
   const [text, setText] = useState('')
-  const [qAArr, setQAArr] = useState([])
+  const [questionsAndAnswers, setQuestionsAndAnswers] = useState([])
 
   const handleQuery = () => {
     console.log(text)
-    const query = { q: text, id: qAArr.length }
-    setQAArr([...qAArr, query])
+    const query = { question: text, id: questionsAndAnswers.length }
+    setQuestionsAndAnswers([...questionsAndAnswers, query])
     setText('')
   }
 
   const Item = ({ title }) => {
     return (
       <View style={styles.listItem}>
-        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.title}>{title.question}</Text>
       </View>
     )
   }
 
   return (
     <View style={styles.container} >
-      <SafeAreaView style={styles.content}>
+      <View style={styles.content}>
         <FlatList
-          data={qAArr}
-          renderItem={({ item }) => <Item title={item.q} />}
+          data={questionsAndAnswers}
+          renderItem={({ item }) => <Item title={item} />}
           keyExtractor={item => item.id}
           nestedScrollEnabled
         />
-      </SafeAreaView>
+      </View>
       <View style={styles.queryViewContainer}>
         <KeyboardAvoidingView behavior="padding" style={styles.queryView} >
           <TextInput
