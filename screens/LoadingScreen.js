@@ -1,14 +1,16 @@
-import { View, Image, StyleSheet, Text } from "react-native";
+import { View, Image, StyleSheet } from "react-native";
 import Constants from 'expo-constants';
+import LoadingBar from "../components/LoadingBar";
 
 const LoadingScreen = () => {
   return (
     <View style={styles.container}>
       <Image style={styles.loadingIcon} source={require('../assets/LoadingIcon.png')} />
-      <Text style={styles.loadingText}>Loading...</Text>
+      <View style={styles.loadingBar} >
+        <LoadingBar />
+      </View>
     </View>
   )
-
 }
 
 const styles = StyleSheet.create({
@@ -24,10 +26,8 @@ const styles = StyleSheet.create({
     padding: 10,
     marginTop: 100
   },
-  loadingText: {
-    fontSize: 30,
-    textAlign: 'center',
-    color: 'white'
+  loadingBar: {
+    marginTop: 35
   }
 })
 
