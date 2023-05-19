@@ -44,7 +44,7 @@ const LoginScreen = ({ navigation, route }) => {
 const styles = StyleSheet.create({
   button: {
     margin: 10,
-    backgroundColor: '#AD1457',
+    backgroundColor: '#994e6f',
     padding: 12,
     borderRadius: 4,
     marginTop: 32,
@@ -54,12 +54,8 @@ const styles = StyleSheet.create({
     fontSize: 24,
     alignItems: 'center',
   },
-  createAccount: {
-    marginRight: 'auto',
-    color: 'blue'
-  },
   forgotPassword: {
-    color: 'blue'
+    color: '#4846c2'
   },
   heading: {
     fontSize: 32,

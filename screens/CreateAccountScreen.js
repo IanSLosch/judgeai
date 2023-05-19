@@ -37,7 +37,7 @@ const CreateAccountScreen = () => {
 const styles = StyleSheet.create({
   button: {
     margin: 10,
-    backgroundColor: '#AD1457',
+    backgroundColor: '#994e6f',
     padding: 12,
     borderRadius: 4,
     marginTop: 32,

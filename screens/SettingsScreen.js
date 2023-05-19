@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, Alert } from "react-native";
+import { View, StyleSheet, Alert } from "react-native";
 import { Button } from "react-native-elements";
 
 const SettingsScreen = ({ navigation, route }) => {
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   button: {
     padding: 15,
     margin: 10,
-    backgroundColor: '#5B6E4F',
+    backgroundColor: '#6b7862',
   },
   container: {
     flex: 1,

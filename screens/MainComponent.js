@@ -1,5 +1,4 @@
-import Constants from 'expo-constants';
-import { Platform, View, StyleSheet, Text, TouchableOpacity } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { Icon } from 'react-native-elements'
 import { SafeAreaView } from 'react-native';
 import SettingsScreen from './SettingsScreen';

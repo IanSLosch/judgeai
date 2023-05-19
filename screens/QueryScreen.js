@@ -1,21 +1,34 @@
-import { useState } from "react";
-import { View, Text, KeyboardAvoidingView, TextInput, StyleSheet, FlatList, SafeAreaView } from "react-native";
+import { useState } from "react"
+import { View, Text, KeyboardAvoidingView, TextInput, StyleSheet, FlatList } from "react-native"
+import askQuestion from "../utility/networkmanager"
 
 const QueryScreen = ({ navigation, route }) => {
   const [text, setText] = useState('')
   const [questionsAndAnswers, setQuestionsAndAnswers] = useState([])
 
-  const handleQuery = () => {
+  const handleQuery = async () => {
     console.log(text)
-    const query = { question: text, id: questionsAndAnswers.length }
-    setQuestionsAndAnswers([...questionsAndAnswers, query])
+    const question = { value: text, id: questionsAndAnswers.length, style: 'question' }
+
+    setQuestionsAndAnswers([...questionsAndAnswers, question])
+    await getAnswer(text)
     setText('')
   }
 
+  const getAnswer = async (text) => {
+    const answer = await askQuestion(text)
+    const answerItem = { value: answer, id: questionsAndAnswers.length + 1, style: 'answer' }
+
+    setTimeout(() => {
+      setQuestionsAndAnswers(arrayWithNewQuestion => [...arrayWithNewQuestion, answerItem])
+    }, 2000)
+  }
+
   const Item = ({ title }) => {
+    console.log(title)
     return (
-      <View style={styles.listItem}>
-        <Text style={styles.title}>{title.question}</Text>
+      <View style={title.style === 'question' ? styles.listItemQuestion : styles.listItemAnswer}>
+        <Text style={styles.title}>{title.value}</Text>
       </View>
     )
   }
@@ -26,7 +39,7 @@ const QueryScreen = ({ navigation, route }) => {
         <FlatList
           data={questionsAndAnswers}
           renderItem={({ item }) => <Item title={item} />}
-          keyExtractor={item => item.id}
+          keyExtractor={item => item.id.toString()}
           nestedScrollEnabled
         />
       </View>
@@ -67,8 +80,15 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 25
   },
-  listItem: {
+  listItemQuestion: {
     backgroundColor: '#e3e3e3',
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+    borderRadius: 20
+  },
+  listItemAnswer: {
+    backgroundColor: '#ced7d9',
     padding: 20,
     marginVertical: 8,
     marginHorizontal: 16,
