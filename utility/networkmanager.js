@@ -2,9 +2,9 @@
 
 const askQuestion = (question) => {
 
-  return new Promise((resolve, reject) => {
-      resolve('Test Response')
-  })
+  // return new Promise((resolve, reject) => {
+  //     resolve('Test Response')
+  // })
 
 
   const urlBase = 'http://192.168.1.22:5000/'

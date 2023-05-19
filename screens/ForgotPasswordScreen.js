@@ -17,7 +17,7 @@ const ForgotPasswordScreen = () => {
           placeholder="Email"
           value={email}
           onChangeText={setEmail}
-          secureTextEntry={true}
+          // secureTextEntry={true}
         />
         <Button buttonStyle={styles.button} title='Reset Password' onPress={handlePasswordReset} />
       </KeyboardAvoidingView>

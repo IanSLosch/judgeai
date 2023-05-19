@@ -7,11 +7,12 @@ const QueryScreen = ({ navigation, route }) => {
   const [questionsAndAnswers, setQuestionsAndAnswers] = useState([])
 
   const handleQuery = async () => {
-    console.log(text)
+    console.log('Question: ' + text)
     const question = { value: text, id: questionsAndAnswers.length, style: 'question' }
 
     setQuestionsAndAnswers([...questionsAndAnswers, question])
     await getAnswer(text)
+    
     setText('')
   }
 
@@ -19,13 +20,14 @@ const QueryScreen = ({ navigation, route }) => {
     const answer = await askQuestion(text)
     const answerItem = { value: answer, id: questionsAndAnswers.length + 1, style: 'answer' }
 
-    setTimeout(() => {
+    // setTimeout(() => {
       setQuestionsAndAnswers(arrayWithNewQuestion => [...arrayWithNewQuestion, answerItem])
-    }, 2000)
+      console.log('Answer: ' + answer)
+    // }, 2000)
   }
 
   const Item = ({ title }) => {
-    console.log(title)
+    // console.log(title)
     return (
       <View style={title.style === 'question' ? styles.listItemQuestion : styles.listItemAnswer}>
         <Text style={styles.title}>{title.value}</Text>
